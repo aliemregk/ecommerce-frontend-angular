@@ -1,0 +1,28 @@
+<form>
+  <div class="row border-bottom">
+    <label class="col-6 d-flex col-form-label-sm justify-content-start">
+      Rating
+    </label>
+    <label
+      class="col-6 d-flex col-form-label-sm justify-content-end"
+      (click)="clearRatingFilter()"
+    >
+      Clear
+    </label>
+  </div>
+  <form class="row">
+    <div class="col-6 col-md-12 mt-1" *ngFor="let rate of ratings">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="optionsRadios"
+        id="optionsRadios{{ rate }}"
+        value="option{{ rate }}"
+      />
+      <label class="form-check-label" for="optionsRadios1">
+        <i class="bi bi-star-fill mx-1" style="color: orange"></i> {{ rate }}+
+        rating
+      </label>
+    </div>
+  </form>
+</form>

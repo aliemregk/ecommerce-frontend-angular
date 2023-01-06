@@ -12,7 +12,8 @@ import { RatingFilterComponent } from './filter/rating-filter/rating-filter.comp
     BodyComponent,
     ProductComponent,
     FilterComponent,
-    PriceFilterComponent
+    PriceFilterComponent,
+    RatingFilterComponent
   ],
   imports: [
     CommonModule,
