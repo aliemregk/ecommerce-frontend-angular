@@ -1,0 +1,11 @@
+#search-text {
+  border-radius: 5px 0 0 5px;
+}
+#search-btn {
+  border-radius: 0 5px 5px 0;
+}
+input:focus {
+  border-color: #178582;
+  outline: #178582;
+  box-shadow: none;
+}

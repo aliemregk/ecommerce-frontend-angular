@@ -1,0 +1,6 @@
+@media screen and (width > 768px) {
+  .navbar {
+    border: none;
+    border-radius: 0.375rem;
+  }
+}

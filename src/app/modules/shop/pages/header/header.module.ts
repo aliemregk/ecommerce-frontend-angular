@@ -8,7 +8,9 @@ import { SearchboxComponent } from './searchbox/searchbox.component';
 
 @NgModule({
   declarations: [
-    HeaderComponent
+    HeaderComponent,
+    NavbarComponent,
+    SearchboxComponent
   ],
   imports: [
     CommonModule
