@@ -1,3 +1,4 @@
+import { ShopModule } from './modules/shop/shop.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -10,6 +11,7 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
+    ShopModule,
     AppRoutingModule
   ],
   providers: [],
