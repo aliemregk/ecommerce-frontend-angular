@@ -1,0 +1,10 @@
+#filter-section {
+  border: 1px solid #2c3e50;
+  border-radius: 15px;
+  position: sticky;
+  top: 20px;
+}
+
+#filter-section :not(:first-child) {
+  margin-top: 10px;
+}

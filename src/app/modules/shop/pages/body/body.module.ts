@@ -9,10 +9,14 @@ import { RatingFilterComponent } from './filter/rating-filter/rating-filter.comp
 
 @NgModule({
   declarations: [
-    BodyComponent
+    BodyComponent,
+    ProductComponent,
+    FilterComponent,
+    PriceFilterComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   exports: [BodyComponent]
 })
