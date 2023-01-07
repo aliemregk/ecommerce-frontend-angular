@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 
 import { ShopRoutingModule } from './shop-routing.module';
 import { MainPageComponent } from './pages/layouts/main-page/main-page.component';
+import { FooterModule } from './pages/footer/footer.module';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { MainPageComponent } from './pages/layouts/main-page/main-page.component
     CommonModule,
     HeaderModule,
     BodyModule,
+    FooterModule,
     ShopRoutingModule
   ]
 })
