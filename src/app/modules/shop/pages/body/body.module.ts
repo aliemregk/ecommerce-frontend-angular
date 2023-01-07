@@ -7,6 +7,9 @@ import { FormsModule } from '@angular/forms';
 import { PriceFilterComponent } from './filter/price-filter/price-filter.component';
 import { RatingFilterComponent } from './filter/rating-filter/rating-filter.component';
 import { ProductDetailComponent } from './product-detail/product-detail/product-detail.component';
+import { DetailSliderComponent } from './product-detail/detail-slider/detail-slider.component';
+import { DetailContentComponent } from './product-detail/detail-content/detail-content/detail-content.component';
+import { DetailPanelComponent } from './product-detail/detail-panel/detail-panel.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +18,10 @@ import { ProductDetailComponent } from './product-detail/product-detail/product-
     FilterComponent,
     PriceFilterComponent,
     RatingFilterComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    DetailSliderComponent,
+    DetailPanelComponent,
+    DetailContentComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,56 @@
+<h5>Product Name -- Lorem ipsum dolor sit amet.</h5>
+<div class="d-flex align-items-center">
+  <div class="col-6 d-flex">
+    <h3>Price $$$</h3>
+  </div>
+  <div class="col-6 d-flex justify-content-end">
+    <span class="fs-5">
+      5,0
+      <i class="bi bi-star-fill"></i>
+      <i class="bi bi-star-fill"></i>
+      <i class="bi bi-star-fill"></i>
+      <i class="bi bi-star-fill"></i>
+      <i class="bi bi-star-fill"></i>
+    </span>
+  </div>
+</div>
+<div class="col-12 my-2 d-flex">
+  <button
+    class="btn btn-primary fs-5 px-3 py-1 fw-bolder"
+    title="Decrease quantity"
+    id="quantity-btn-1"
+    (click)="decrease()"
+  >
+    -
+  </button>
+  <div class="col-1">
+    <input
+      class="form-control text-center px-0"
+      id="quantity"
+      type="number"
+      min="1"
+      readonly
+      [value]="quantity"
+      [max]="99 || stock"
+    />
+  </div>
+  <button
+    class="btn btn-primary fs-5 px-3 py-1 fw-bolder"
+    title="Increase quantity"
+    id="quantity-btn-2"
+    (click)="increase()"
+  >
+    +
+  </button>
+  <button class="btn btn-primary ms-1 fs-5 px-3 py-1">
+    Add To Cart <i class="bi bi-cart-plus-fill"></i>
+  </button>
+</div>
+<div class="col-12 card border-primary mb-3">
+  <h6 class="card-body border-bottom py-2">
+    Shipping <i class="bi bi-box-seam"></i>
+  </h6>
+  <p class="card-text py-2 px-3 fs-6">
+    Today's orders will be shipped tomorrow.
+  </p>
+</div>
