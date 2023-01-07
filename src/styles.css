@@ -30,6 +30,10 @@
   width: 70%;
 }
 
-.pointer-c {
+.cursor-p {
   cursor: pointer;
+}
+
+.bi-star-fill, .bi-star-half {
+  color: orange;
 }
