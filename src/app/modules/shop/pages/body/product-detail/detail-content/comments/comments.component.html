@@ -1,0 +1,8 @@
+<div class="card col-8 m-auto my-4" *ngFor="let comment of comments">
+  <div class="card-body">
+    <h5 class="card-title border-bottom"><i class="bi bi-person-circle"></i> {{ comment.userName }}</h5>
+    <p class="card-text">
+      {{ comment.content }}
+    </p>
+  </div>
+</div>

@@ -10,6 +10,9 @@ import { ProductDetailComponent } from './product-detail/product-detail/product-
 import { DetailSliderComponent } from './product-detail/detail-slider/detail-slider.component';
 import { DetailContentComponent } from './product-detail/detail-content/detail-content/detail-content.component';
 import { DetailPanelComponent } from './product-detail/detail-panel/detail-panel.component';
+import { DescriptionComponent } from './product-detail/detail-content/description/description.component';
+import { RatingComponent } from './product-detail/detail-content/rating/rating.component';
+import { CommentsComponent } from './product-detail/detail-content/comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,10 @@ import { DetailPanelComponent } from './product-detail/detail-panel/detail-panel
     ProductDetailComponent,
     DetailSliderComponent,
     DetailPanelComponent,
-    DetailContentComponent
+    DetailContentComponent,
+    DescriptionComponent,
+    RatingComponent,
+    CommentsComponent
   ],
   imports: [
     CommonModule,
