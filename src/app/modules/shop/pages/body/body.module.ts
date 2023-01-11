@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BodyComponent } from './body/body.component';
@@ -31,6 +32,7 @@ import { CommentsComponent } from './product-detail/detail-content/comments/comm
   ],
   imports: [
     CommonModule,
+    RouterModule,
     FormsModule
   ],
   exports: [BodyComponent]

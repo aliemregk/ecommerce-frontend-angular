@@ -1,9 +1,26 @@
+import { LoginRegisterPageComponent } from './pages/layouts/login-register-page/login-register-page.component';
+import { RegisterComponent } from './pages/user/register/register.component';
+import { LoginComponent } from './pages/user/login/login.component';
+import { ProductDetailComponent } from './pages/body/product-detail/product-detail/product-detail.component';
+import { BodyComponent } from './pages/body/body/body.component';
 import { MainPageComponent } from './pages/layouts/main-page/main-page.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: "", component: MainPageComponent }
+  {
+    path: "", component: MainPageComponent, children: [
+      { path: "", component: BodyComponent },
+      { path: "details", component: ProductDetailComponent }
+    ]
+  },
+  {
+    path: "", component: LoginRegisterPageComponent, children: [
+      { path: "login", component: LoginComponent },
+      { path: "register", component: RegisterComponent }
+    ]
+  }
+
 ];
 
 @NgModule({
