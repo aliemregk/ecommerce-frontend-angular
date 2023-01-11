@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
   ],
   imports: [
     CommonModule
-  ]
+  ],
+  exports:[LoginComponent, RegisterComponent]
 })
 export class UserModule { }
