@@ -1,3 +1,5 @@
-footer {
-  color: white;
+span:hover,
+i:hover {
+  color: #18bc9c;
+  cursor: pointer;
 }
