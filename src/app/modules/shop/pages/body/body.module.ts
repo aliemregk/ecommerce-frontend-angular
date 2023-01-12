@@ -14,6 +14,7 @@ import { DetailPanelComponent } from './product-detail/detail-panel/detail-panel
 import { DescriptionComponent } from './product-detail/detail-content/description/description.component';
 import { RatingComponent } from './product-detail/detail-content/rating/rating.component';
 import { CommentsComponent } from './product-detail/detail-content/comments/comments.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { CommentsComponent } from './product-detail/detail-content/comments/comm
     DetailContentComponent,
     DescriptionComponent,
     RatingComponent,
-    CommentsComponent
+    CommentsComponent,
+    CartComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,31 @@
+<div class="row container m-auto">
+  <table class="table table-hover align-middle text-center">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Product Image</th>
+        <th scope="col">Product Name</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table" *ngFor="let item of cartItems; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>TODO -- image</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>{{ item.price }}</td>
+        <td>
+          <button class="btn btn-danger">Remove</button>
+        </td>
+      </tr>
+      <tr>
+        <td>Cart Total</td>
+        <td></td>
+        <td></td>
+        <td>TODO -- Total Price Function</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
