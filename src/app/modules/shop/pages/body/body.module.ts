@@ -7,14 +7,8 @@ import { FilterComponent } from './filter/filter/filter.component';
 import { FormsModule } from '@angular/forms';
 import { PriceFilterComponent } from './filter/price-filter/price-filter.component';
 import { RatingFilterComponent } from './filter/rating-filter/rating-filter.component';
-import { ProductDetailComponent } from './product-detail/product-detail/product-detail.component';
-import { DetailSliderComponent } from './product-detail/detail-slider/detail-slider.component';
-import { DetailContentComponent } from './product-detail/detail-content/detail-content/detail-content.component';
-import { DetailPanelComponent } from './product-detail/detail-panel/detail-panel.component';
-import { DescriptionComponent } from './product-detail/detail-content/description/description.component';
-import { RatingComponent } from './product-detail/detail-content/rating/rating.component';
-import { CommentsComponent } from './product-detail/detail-content/comments/comments.component';
 import { CartComponent } from './cart/cart.component';
+import { ProductDetailModule } from './product-detail/product-detail.module';
 
 @NgModule({
   declarations: [
@@ -23,19 +17,13 @@ import { CartComponent } from './cart/cart.component';
     FilterComponent,
     PriceFilterComponent,
     RatingFilterComponent,
-    ProductDetailComponent,
-    DetailSliderComponent,
-    DetailPanelComponent,
-    DetailContentComponent,
-    DescriptionComponent,
-    RatingComponent,
-    CommentsComponent,
     CartComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    ProductDetailModule
   ],
   exports: [BodyComponent]
 })
