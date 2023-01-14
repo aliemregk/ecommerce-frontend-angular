@@ -14,43 +14,76 @@
     </span>
   </div>
 </div>
-<div class="col-12 my-2 d-flex my-3">
-  <button
-    class="btn btn-primary fs-5 px-3 py-1 fw-bolder"
-    title="Decrease quantity"
-    id="quantity-btn-1"
-    (click)="decrease()"
-  >
-    -
-  </button>
-  <div class="col-1">
-    <input
-      class="form-control text-center px-0"
-      id="quantity"
-      type="number"
-      min="1"
-      readonly
-      [value]="quantity"
-      [max]="99 || stock"
-    />
+<div class="col-12 text-center">
+  <div class="btn-group py-2 col-8 col-md-4 mx-1">
+    <button class="btn btn-primary" (click)="increase()">
+      <i class="bi bi-plus-circle"></i>
+    </button>
+    <div class="btn border border-primary align-items-center fs-5">
+      {{ quantity }}
+    </div>
+    <button class="btn btn-primary" (click)="decrease()">
+      <i class="bi bi-dash-circle"></i>
+    </button>
   </div>
-  <button
-    class="btn btn-primary fs-5 px-3 py-1 fw-bolder"
-    title="Increase quantity"
-    id="quantity-btn-2"
-    (click)="increase()"
-  >
-    +
-  </button>
-  <button class="btn btn-primary ms-1 fs-5 px-3 py-1">
-    Add To Cart <i class="bi bi-cart-plus-fill"></i>
-  </button>
+  <div class="btn-group py-2 col-8 col-md-6 mx-1">
+    <button class="btn btn-primary fs-5 px-4">
+      Add To Cart <i class="bi bi-cart-plus-fill"></i>
+    </button>
+  </div>
 </div>
-<div class="col-12 card border-primary mt-5">
-  <h6 class="card-body border-bottom py-2">
-    Shipping <i class="bi bi-box-seam"></i>
-  </h6>
-  <p class="card-text py-2 px-3 fs-6">
-    Today's orders will be shipped tomorrow.
-  </p>
+<div class="accordion col-12 mt-5">
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button
+        class="accordion-button collapsed"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseOne"
+        aria-expanded="false"
+        aria-controls="collapseOne"
+      >
+        Details <i class="ms-1 bi-book"></i>
+      </button>
+    </h2>
+    <div
+      id="collapseOne"
+      class="accordion-collapse collapse"
+      aria-labelledby="headingOne"
+      data-bs-parent="#accordion"
+    >
+      <div class="accordion-body">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Lorem ipsum dolor sit.</li>
+          <li class="list-group-item">Lorem, ipsum dolor.</li>
+          <li class="list-group-item">
+            Lorem ipsum dolor sit amet consectetur.
+          </li>
+          <li class="list-group-item">Lorem ipsum dolor sit amet.</li>
+          <li class="list-group-item">Lorem ipsum dolor sit amet.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseTwo"
+        aria-expanded="false"
+        aria-controls="collapseTwo"
+      >
+        Shipping <i class="ms-1 bi bi-box-seam"></i>
+      </button>
+    </h2>
+    <div
+      id="collapseTwo"
+      class="accordion-collapse collapse"
+      aria-labelledby="headingTwo"
+      data-bs-parent="#accordion"
+    >
+      <div class="accordion-body">Today's orders will be shipped tomorrow.</div>
+    </div>
+  </div>
 </div>

@@ -1,8 +1,8 @@
 <div class="row align-items-center">
-  <div class="col">
+  <div class="col d-flex justify-content-center my-2">
     <img src="https://picsum.photos/200" alt="product image" />
   </div>
-  <div class="col d-flex flex-column align-items-center">
+  <div class="col-6 col-md d-flex flex-column align-items-center">
     <p class="fs-1">4,5</p>
     <span class="fs-4">
       <i class="bi bi-star-fill"></i>
@@ -12,7 +12,7 @@
       <i class="bi bi-star-half"></i>
     </span>
   </div>
-  <div class="col">
+  <div class="col-6 col-md">
     <div class="row align-items-center" *ngFor="let item of ratings">
       <div class="col px-1 text-center">
         <i class="bi bi-star-fill"></i> {{ item.star }}

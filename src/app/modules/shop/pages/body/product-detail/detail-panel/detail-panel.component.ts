@@ -16,13 +16,14 @@ export class DetailPanelComponent implements OnInit {
   }
 
   protected increase(): void {
-    this.quantity++;
+    if (this.quantity < this.stock) {
+      this.quantity++;
+    }
   }
 
   protected decrease(): void {
-    if (this.quantity <= 1) {
-      return;
+    if (this.quantity != 1) {
+      this.quantity--;
     }
-    this.quantity--;
   }
 }
