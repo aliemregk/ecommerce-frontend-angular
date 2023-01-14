@@ -1,4 +1,4 @@
-import { CartComponent } from './pages/body/cart/cart.component';
+import { CartComponent } from './pages/body/cart/cart/cart.component';
 import { LoginRegisterPageComponent } from './pages/layouts/login-register-page/login-register-page.component';
 import { RegisterComponent } from './pages/user/register/register.component';
 import { LoginComponent } from './pages/user/login/login.component';

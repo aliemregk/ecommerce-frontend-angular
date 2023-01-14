@@ -1,0 +1,78 @@
+<div class="card p-2 bg-primary text-white">
+  <h5 class="p-1 text-center border-bottom">Confirm Cart</h5>
+  <div class="card-body">
+    <form class="row g-3">
+      <div class="col-12">
+        <label class="form-label" for="cardholder"> Cardholder's Name </label>
+        <input
+          type="text"
+          name="Cardholder"
+          id="cardholder"
+          placeholder="Cardholder's Name"
+          class="form-control"
+        />
+      </div>
+      <div class="col-12">
+        <label class="form-label" for="cardholder"> Card Number </label>
+        <input
+          type="number"
+          name="Card Number"
+          id="cardNumber"
+          placeholder="1111 1111 1111 1111"
+          class="form-control"
+          onkeypress="if(this.value.length > 15) return false"
+        />
+      </div>
+      <div class="col-6">
+        <label class="form-label" for="cvv"> CVV/CVC </label>
+        <input
+          type="number"
+          name="CVV"
+          id="cvv"
+          placeholder="***"
+          class="form-control"
+          max="999"
+          onkeypress="if(this.value.length >2) return false"
+        />
+      </div>
+      <div class="col-6">
+        <label class="form-label" for="expiry"> Expiry </label>
+        <input
+          type="month"
+          [maxLength]="7"
+          class="form-control"
+          id="expiry"
+          min="2023-02"
+        />
+      </div>
+      <div class="col-12">
+        <label class="form-label" for="address"> Address </label>
+        <input
+          type="text"
+          name="Address"
+          id="address"
+          placeholder="Delivery Address"
+          class="form-control"
+          maxlength="200"
+        />
+      </div>
+    </form>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col">Cart Total:</div>
+      <div class="col text-end">1500$</div>
+    </div>
+    <div class="row">
+      <div class="col">Shipping:</div>
+      <div class="col text-end">20$</div>
+    </div>
+    <div class="row">
+      <div class="col">Total:</div>
+      <div class="col text-end">1520$</div>
+    </div>
+  </div>
+  <div class="card-footer bg-primary border-top text-center">
+    <button class="btn btn-success w-50">Pay</button>
+  </div>
+</div>

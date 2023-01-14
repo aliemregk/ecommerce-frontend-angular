@@ -14,11 +14,27 @@ export class CartComponent implements OnInit {
     { name: "product 4", image: "https://picsum.photos/id/4/80", description: "Lorem ipsum dolor sit amet consectetur.", quantity: 3, unitPrice: 37 },
     { name: "product 5", image: "https://picsum.photos/id/5/80", description: "Lorem ipsum dolor sit amet consectetur.", quantity: 1, unitPrice: 65 },
     { name: "product 6", image: "https://picsum.photos/id/6/80", description: "Lorem ipsum dolor sit amet consectetur.", quantity: 2, unitPrice: 50 }
-  ]
+  ];
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+
+  // TODO refactor 
+  increaseQuantity(item: any) {
+    item.quantity++;
+  }
+
+  decreaseQuantity(item: any) {
+    if (item.quantity != 1) {
+      item.quantity--;
+    }
+  }
+
+  removeFromCart(item: any) {
+    this.cartItems.splice(this.cartItems.indexOf(item), 1);
   }
 
 }
