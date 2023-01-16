@@ -2,14 +2,19 @@
   class="navbar navbar-dark bg-primary container-md shadow-sm border-bottom my-md-3"
 >
   <div class="container">
-    <a class="navbar-brand mx-3">Shop</a>
+    <a class="navbar-brand mx-3 p-0 fs-2" routerLink="">Shop</a>
     <div class="d-flex justify-content-end">
       <!-- TODO add badge  -->
-      <button class="btn btn-secondary" routerLink="/cart">
+      <button class="btn btn-secondary mx-1" routerLink="/cart">
         Cart <i class="bi bi-cart"></i>
       </button>
-      <button class="btn btn-secondary mx-3" routerLink="/login">Login</button>
-      <button class="btn btn-secondary" routerLink="/register">Register</button>
+      <button class="btn btn-secondary mx-1" routerLink="/profile">
+        Profile
+      </button>
+      <button class="btn btn-secondary mx-1" routerLink="/login">Login</button>
+      <button class="btn btn-secondary mx-1" routerLink="/register">
+        Register
+      </button>
     </div>
   </div>
 </nav>
