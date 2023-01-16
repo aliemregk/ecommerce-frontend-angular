@@ -10,6 +10,7 @@ import { PriceFilterComponent } from './filter/price-filter/price-filter.compone
 import { RatingFilterComponent } from './filter/rating-filter/rating-filter.component';
 import { ProductDetailModule } from './product-detail/product-detail.module';
 import { ProfileComponent } from './user/profile/profile.component';
+import { ProfileNavComponent } from './user/profile-nav/profile-nav.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ProfileComponent } from './user/profile/profile.component';
     FilterComponent,
     PriceFilterComponent,
     RatingFilterComponent,
-    ProfileComponent
+    ProfileComponent,
+    ProfileNavComponent
   ],
   imports: [
     CommonModule,
