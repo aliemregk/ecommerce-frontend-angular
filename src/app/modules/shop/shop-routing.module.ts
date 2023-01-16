@@ -1,3 +1,4 @@
+import { ProfileComponent } from './pages/body/user/profile/profile.component';
 import { CartComponent } from './pages/body/cart/cart/cart.component';
 import { LoginRegisterPageComponent } from './pages/layouts/login-register-page/login-register-page.component';
 import { RegisterComponent } from './pages/user/register/register.component';
@@ -13,7 +14,8 @@ const routes: Routes = [
     path: "", component: MainPageComponent, children: [
       { path: "", component: BodyComponent },
       { path: "details", component: ProductDetailComponent },
-      { path: "cart", component: CartComponent }
+      { path: "cart", component: CartComponent },
+      { path: "profile", component: ProfileComponent }
     ]
   },
   {

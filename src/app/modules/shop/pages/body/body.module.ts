@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { PriceFilterComponent } from './filter/price-filter/price-filter.component';
 import { RatingFilterComponent } from './filter/rating-filter/rating-filter.component';
 import { ProductDetailModule } from './product-detail/product-detail.module';
+import { ProfileComponent } from './user/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ProductDetailModule } from './product-detail/product-detail.module';
     ProductComponent,
     FilterComponent,
     PriceFilterComponent,
-    RatingFilterComponent
+    RatingFilterComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
