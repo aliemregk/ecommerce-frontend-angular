@@ -1,3 +1,5 @@
+import { ProfileNavComponent } from './profile/profile-nav/profile-nav.component';
+import { ProfileModule } from './profile/profile.module';
 import { CartModule } from './cart/cart.module';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -9,9 +11,6 @@ import { FormsModule } from '@angular/forms';
 import { PriceFilterComponent } from './filter/price-filter/price-filter.component';
 import { RatingFilterComponent } from './filter/rating-filter/rating-filter.component';
 import { ProductDetailModule } from './product-detail/product-detail.module';
-import { ProfileComponent } from './user/profile/profile.component';
-import { ProfileNavComponent } from './user/profile-nav/profile-nav.component';
-import { UserOrdersComponent } from './user/order/user-orders.component';
 
 @NgModule({
   declarations: [
@@ -19,18 +18,16 @@ import { UserOrdersComponent } from './user/order/user-orders.component';
     ProductComponent,
     FilterComponent,
     PriceFilterComponent,
-    RatingFilterComponent,
-    ProfileComponent,
-    ProfileNavComponent,
-    UserOrdersComponent
+    RatingFilterComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     FormsModule,
     ProductDetailModule,
-    CartModule
+    CartModule,
+    ProfileModule
   ],
-  exports: [BodyComponent]
+  exports: [BodyComponent, ProfileNavComponent]
 })
 export class BodyModule { }
