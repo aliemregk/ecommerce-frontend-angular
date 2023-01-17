@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+  <div class="accordion mb-2" id="ordersAccordion" *ngFor="let order of orders">
+    <div class="accordion-item shadow-sm border-primary">
+      <h2 class="accordion-header" [id]="'heading' + order.id">
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          [attr.data-bs-target]="'#collapse' + order.id"
+          aria-expanded="false"
+          [attr.aria-controls]="'collapse' + order.id"
+        >
+          Order #{{ order.id }}
+        </button>
+      </h2>
+      <div
+        [id]="'collapse' + order.id"
+        class="accordion-collapse collapse"
+        [attr.aria-labelledby]="order.id"
+        data-bs-parent="#ordersAccordion"
+      >
+        <div class="accordion-body">
+          <div class="row">
+            <div class="col">
+              <p class="fw-bold text-decoration-underline m-0">Order Date</p>
+              <p>{{ order.orderDate }}</p>
+            </div>
+            <div class="col">
+              <p class="fw-bold text-decoration-underline m-0">Status</p>
+              <p>{{ order.status }}</p>
+            </div>
+            <div class="col">
+              <p class="fw-bold text-decoration-underline m-0">Delivery Date</p>
+              <p>{{ order.deliveryDate }}</p>
+            </div>
+            <div></div>
+          </div>
+          <div class="row d-flex justify-content-center">
+            <div class="btn-group">
+              <button class="btn btn-info">Details</button>
+              <button
+                class="btn btn-danger"
+                [disabled]="order.status == 'Delivered'"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
