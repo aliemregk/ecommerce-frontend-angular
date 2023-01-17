@@ -2,3 +2,6 @@
   outline: none;
   box-shadow: none;
 }
+#delivery {
+  min-height: 24px;
+}

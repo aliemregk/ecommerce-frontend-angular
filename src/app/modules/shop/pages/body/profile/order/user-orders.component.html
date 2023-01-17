@@ -31,13 +31,16 @@
             </div>
             <div class="col">
               <p class="fw-bold text-decoration-underline m-0">Delivery Date</p>
-              <p>{{ order.deliveryDate }}</p>
+              <p class="mb-2" id="delivery">{{ order.deliveryDate }}</p>
             </div>
             <div></div>
           </div>
-          <div class="row d-flex justify-content-center">
-            <div class="btn-group">
-              <button class="btn btn-info">Details</button>
+          <div class="col-8 col-md-6 m-auto">
+            <div class="btn-group w-100">
+              <!-- TODO add id to route -->
+              <button class="btn btn-info" routerLink="/orderdetails">
+                Details
+              </button>
               <button
                 class="btn btn-danger"
                 [disabled]="order.status == 'Delivered'"

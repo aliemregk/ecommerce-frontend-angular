@@ -1,3 +1,4 @@
+import { OrderDetailsComponent } from './pages/body/profile/order-details/order-details.component';
 import { UserOrdersComponent } from './pages/body/profile/order/user-orders.component';
 import { ProfileComponent } from './pages/body/profile/profile/profile.component';
 import { ProfilePageComponent } from './pages/layouts/profile-page/profile-page.component';
@@ -28,7 +29,8 @@ const routes: Routes = [
   {
     path: "", component: ProfilePageComponent, children: [
       { path: "profile", component: ProfileComponent },
-      { path: "orders", component: UserOrdersComponent }
+      { path: "orders", component: UserOrdersComponent },
+      { path: "orderdetails", component: OrderDetailsComponent }
     ]
   }
 

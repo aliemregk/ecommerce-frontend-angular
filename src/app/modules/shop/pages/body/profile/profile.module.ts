@@ -4,6 +4,7 @@ import { ProfileNavComponent } from './profile-nav/profile-nav.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { OrderDetailsComponent } from './order-details/order-details.component';
 
 
 
@@ -11,7 +12,8 @@ import { CommonModule } from '@angular/common';
   declarations: [
     ProfileComponent,
     ProfileNavComponent,
-    UserOrdersComponent
+    UserOrdersComponent,
+    OrderDetailsComponent
   ],
   imports: [
     CommonModule,

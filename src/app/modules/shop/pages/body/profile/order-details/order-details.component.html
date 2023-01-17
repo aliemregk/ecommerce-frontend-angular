@@ -1,0 +1,41 @@
+<div class="table-responsive">
+  <table class="table align-middle mb-0 bg-white">
+    <thead class="bg-light text-center">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Product</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody class="text-center">
+      <tr *ngFor="let detail of orderDetails; let i = index">
+        <td>1</td>
+        <td>
+          <div class="d-flex align-items-center justify-content-center">
+            <img
+              src="https://picsum.photos/200"
+              alt=""
+              style="width: 75px; height: 75px"
+              class="rounded"
+            />
+            <div class="ms-3">
+              <p class="mb-1">{{ detail.product.name }}</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          {{ detail.quantity }}
+        </td>
+        <td>
+          {{ detail.product.unitPrice * detail.quantity }}
+        </td>
+      </tr>
+      <tr class="fw-bold">
+        <td>Total</td>
+        <td colspan="2"></td>
+        <td>100</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
