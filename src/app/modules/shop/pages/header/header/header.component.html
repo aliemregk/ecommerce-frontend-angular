@@ -1,8 +1,8 @@
-<nav
+<header
   class="navbar navbar-dark bg-primary container-md shadow-sm border-bottom my-md-3"
 >
   <div class="container">
-    <a class="navbar-brand mx-3 p-0 fs-2" routerLink="">Shop</a>
+    <a class="navbar-brand me-3 m-2  fs-2" routerLink="">Shop</a>
     <div class="d-flex justify-content-end">
       <!-- TODO add badge  -->
       <button class="btn btn-secondary mx-1" routerLink="/cart">
@@ -17,6 +17,8 @@
       </button>
     </div>
   </div>
-</nav>
-<app-navbar></app-navbar>
-<app-searchbox></app-searchbox>
+</header>
+<div *ngIf="show">
+  <app-navbar></app-navbar>
+  <app-searchbox></app-searchbox>
+</div>

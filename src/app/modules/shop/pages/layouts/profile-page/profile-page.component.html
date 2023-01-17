@@ -1,1 +1,18 @@
-<p>profile page works!</p>
+<div class="d-flex flex-column mb-5" style="min-height: 100vh">
+  <app-header [show]="false"></app-header>
+  <div class="container col-10 mt-2">
+    <button class="btn ps-0 my-2" routerLink="">
+      <i class="bi bi-arrow-left-circle fs-4"> </i>
+      <span class="p-2 fs-5">Continue Shopping</span>
+    </button>
+    <div class="row g-4">
+      <div class="col-12 col-md-4">
+        <app-profile-nav></app-profile-nav>
+      </div>
+      <div class="col-12 col-md-8">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
