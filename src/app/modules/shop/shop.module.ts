@@ -8,12 +8,14 @@ import { ShopRoutingModule } from './shop-routing.module';
 import { MainPageComponent } from './pages/layouts/main-page/main-page.component';
 import { FooterModule } from './pages/footer/footer.module';
 import { LoginRegisterPageComponent } from './pages/layouts/login-register-page/login-register-page.component';
+import { ProfilePageComponent } from './pages/layouts/profile-page/profile-page.component';
 
 
 @NgModule({
   declarations: [
     MainPageComponent,
-    LoginRegisterPageComponent
+    LoginRegisterPageComponent,
+    ProfilePageComponent
   ],
   imports: [
     CommonModule,
