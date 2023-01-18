@@ -1,27 +1,28 @@
 <div class="row container-md m-auto">
-  <!-- <div *ngIf="(products$ | async ) as list; else ghostData"> </div>-->
-  <div
-    class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 g-3"
-    *ngFor="let item of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
-  >
-    <div class="card mb-1 shadow">
-      <img
-        class="w-100 h-100"
-        src="https://picsum.photos/id/5/130/130"
-        alt="product img"
-        loading="lazy"
-        routerLink="details"
-      />
-      <div class="card-body">
-        <p class="card-text">Some example text...</p>
-        <div class="row">
-          <button class="btn btn-primary">
-            Add to cart <i class="bi bi-cart-plus"></i>
-          </button>
+  <ng-container *ngIf="dataLoaded; else ghostData">
+    <div
+      class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 g-3"
+      *ngFor="let product of products"
+    >
+      <div class="card mb-1 shadow">
+        <img
+          class="w-100 h-100"
+          src="https://picsum.photos/id/5/130/130"
+          alt="product img"
+          loading="lazy"
+          routerLink="details"
+        />
+        <div class="card-body">
+          <p class="card-text">{{ product.name }}</p>
+          <div class="row">
+            <button class="btn btn-primary">
+              {{ product.unitPrice }}$ <i class="bi bi-cart-plus"></i>
+            </button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </ng-container>
   <ng-template #ghostData>
     <div
       class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 g-2"
