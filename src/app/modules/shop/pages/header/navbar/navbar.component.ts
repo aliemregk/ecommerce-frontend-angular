@@ -19,7 +19,7 @@ export class NavbarComponent implements OnInit {
   }
 
   getAllCategories() {
-    this.categoryService.getAllCategories().subscribe({
+    this.categoryService.getAll().subscribe({
       next: (response) => {
         this.categories = response.data;
         this.dataLoaded = true;

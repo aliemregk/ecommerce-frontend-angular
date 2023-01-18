@@ -19,12 +19,10 @@ export class ProductComponent implements OnInit {
   }
 
   private getAllProducts(): void {
-    this.productService.getAllProducts().subscribe({
+    this.productService.getAll().subscribe({
       next: (response) => {
         this.products = response.data;
         this.dataLoaded = true;
-        console.log(this.products[1]);
-        
       },
       error: (errorResponse) => {
         this.dataLoaded = false;

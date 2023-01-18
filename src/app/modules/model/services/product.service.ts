@@ -1,20 +1,15 @@
-import { Observable } from 'rxjs';
-import { API_URL } from './../../../shared/constants/constants';
 import { HttpClient } from '@angular/common/http';
+import { BaseService } from './base.service';
 import { Injectable } from '@angular/core';
-import { ListResponse } from '../models/responses/listResponse.model';
 import { Product } from '../models/entities/product.model';
+import { PRODUCT_ENDPOINT } from 'src/app/shared/constants/constants';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
+export class ProductService extends BaseService<Product>{
 
-  private apiUrl: string = API_URL + "products";
-
-  constructor(private readonly httpClient: HttpClient) { }
-
-  public getAllProducts(): Observable<ListResponse<Product>> {
-    return this.httpClient.get<ListResponse<Product>>(this.apiUrl + "/getall");
+  constructor(http: HttpClient) {
+    super(http, PRODUCT_ENDPOINT);
   }
 }
