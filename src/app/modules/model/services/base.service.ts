@@ -20,7 +20,7 @@ export abstract class BaseService<T> {
     return this.http.get<ListResponse<T>>(this.url + "getall");
   }
 
-  public get(id: number): Observable<SingleResponse<T>> {
+  public getById(id: number): Observable<SingleResponse<T>> {
     return this.http.get<SingleResponse<T>>(this.url + "getbyid?id=" + id);
   }
 

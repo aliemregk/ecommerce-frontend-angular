@@ -9,7 +9,7 @@ import { CATEGORY_ENDPOINT } from 'src/app/shared/constants/constants';
 })
 export class CategoryService extends BaseService<Category>{
 
-  constructor(http: HttpClient) {
-    super(http, CATEGORY_ENDPOINT);
+  constructor(private readonly httpClient: HttpClient) {
+    super(httpClient, CATEGORY_ENDPOINT);
   }
 }

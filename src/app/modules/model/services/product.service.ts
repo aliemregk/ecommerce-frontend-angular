@@ -1,3 +1,4 @@
+import { API_URL } from './../../../shared/constants/constants';
 import { HttpClient } from '@angular/common/http';
 import { BaseService } from './base.service';
 import { Injectable } from '@angular/core';
@@ -9,7 +10,7 @@ import { PRODUCT_ENDPOINT } from 'src/app/shared/constants/constants';
 })
 export class ProductService extends BaseService<Product>{
 
-  constructor(http: HttpClient) {
-    super(http, PRODUCT_ENDPOINT);
+  constructor(private readonly httpClient: HttpClient) {
+    super(httpClient, PRODUCT_ENDPOINT);
   }
 }
