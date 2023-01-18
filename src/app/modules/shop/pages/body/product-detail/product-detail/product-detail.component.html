@@ -1,11 +1,13 @@
-<div class="row container m-auto p-0 m-0 border justify-content-center">
-  <div class="col-10 col-md-8 col-lg-4 p-5">
-    <app-detail-slider></app-detail-slider>
+<ng-container *ngIf="dataLoaded">
+  <div class="row container m-auto p-0 m-0 border justify-content-center">
+    <div class="col-10 col-md-8 col-lg-4 p-5">
+      <app-detail-slider [productId]="product.id"></app-detail-slider>
+    </div>
+    <div class="col-12 col-md-8 col-lg-6 p-5">
+      <app-detail-panel [product]="product"></app-detail-panel>
+    </div>
   </div>
-  <div class="col-12 col-md-8 col-lg-6 p-5">
-    <app-detail-panel></app-detail-panel>
+  <div class="row container m-auto p-0 m-0 rounded border mt-2 bg-light">
+    <app-detail-content [product]="product"></app-detail-content>
   </div>
-</div>
-<div class="row container m-auto p-0 m-0 rounded border mt-2 bg-light">
-  <app-detail-content></app-detail-content>
-</div>
+</ng-container>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-comments',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./comments.component.css']
 })
 export class CommentsComponent implements OnInit {
+
+  @Input() productId!: number;
 
   protected comments = [
     {
@@ -29,7 +31,7 @@ export class CommentsComponent implements OnInit {
         "adipisicing elit. Maxime fugit pariatur nesciunt odio magni recusandae libero sit, voluptatibus delenitiut."
     }
   ]
-
+  // TODO add comment service and fetch comments by product ID
   constructor() { }
 
   ngOnInit(): void {

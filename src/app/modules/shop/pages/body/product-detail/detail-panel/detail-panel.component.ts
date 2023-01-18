@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Product } from 'src/app/modules/model/models/entities/product.model';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-detail-panel',
@@ -7,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailPanelComponent implements OnInit {
 
+  @Input() product!: Product;
   protected quantity: number = 1;
-  protected stock: number = 99;
 
   constructor() { }
 
@@ -16,7 +17,7 @@ export class DetailPanelComponent implements OnInit {
   }
 
   protected increase(): void {
-    if (this.quantity < this.stock) {
+    if (this.quantity < this.product.stock) {
       this.quantity++;
     }
   }
