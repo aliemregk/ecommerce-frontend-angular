@@ -1,18 +1,14 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-primary shadow-sm">
   <div class="container-fluid">
     <ul class="navbar-nav me-auto m-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Home</a>
+      <li class="nav-item text-white" *ngIf="!dataLoaded; else navbar">
+        Error while fetching data..
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
-      </li>
+      <ng-template #navbar>
+        <li class="nav-item" *ngFor="let category of categories">
+          <a class="nav-link">{{ category.name }}</a>
+        </li>
+      </ng-template>
     </ul>
   </div>
 </nav>
