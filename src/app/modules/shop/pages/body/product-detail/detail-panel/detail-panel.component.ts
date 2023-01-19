@@ -1,3 +1,5 @@
+import { CartService } from './../../../../../model/services/cart.service';
+import { NotificationService } from './../../../../../../shared/services/notification.service';
 import { Product } from 'src/app/modules/model/models/entities/product.model';
 import { Component, Input, OnInit } from '@angular/core';
 
@@ -11,7 +13,10 @@ export class DetailPanelComponent implements OnInit {
   @Input() product!: Product;
   protected quantity: number = 1;
 
-  constructor() { }
+  constructor(
+    private readonly notificationService: NotificationService,
+    private readonly cartService: CartService
+  ) { }
 
   ngOnInit(): void {
   }
@@ -26,5 +31,10 @@ export class DetailPanelComponent implements OnInit {
     if (this.quantity != 1) {
       this.quantity--;
     }
+  }
+
+  protected addToCart(product: Product): void {
+    this.notificationService.success(product.name + " added to cart.")
+    this.cartService.addToCart(product);
   }
 }

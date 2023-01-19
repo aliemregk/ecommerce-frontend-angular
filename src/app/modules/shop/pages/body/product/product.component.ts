@@ -1,7 +1,9 @@
+import { CartService } from './../../../../model/services/cart.service';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from './../../../../model/services/product.service';
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/modules/model/models/entities/product.model';
+import { NotificationService } from './../../../../../shared/services/notification.service';
 
 @Component({
   selector: 'app-product',
@@ -15,7 +17,9 @@ export class ProductComponent implements OnInit {
 
   constructor(
     private readonly productService: ProductService,
-    private readonly activatedRoute: ActivatedRoute
+    private readonly activatedRoute: ActivatedRoute,
+    private readonly notificationService: NotificationService,
+    private readonly cartService: CartService
   ) { }
 
   ngOnInit(): void {
@@ -54,4 +58,8 @@ export class ProductComponent implements OnInit {
     })
   }
 
+  protected addToCart(product: Product): void {
+    this.notificationService.success(product.name + " added to cart.")
+    this.cartService.addToCart(product);
+  }
 }
