@@ -12,7 +12,7 @@ export abstract class BaseService<T> {
 
   url: string = "";
 
-  constructor(private readonly http: HttpClient, @Inject(String) protected _url: string,) {
+  constructor(private readonly http: HttpClient, @Inject(String) protected _url: string) {
     this.url = API_URL + _url;
   }
 
