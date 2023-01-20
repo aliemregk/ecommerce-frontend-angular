@@ -1,5 +1,9 @@
 <div class="row justify-content-center">
-  <div class="accordion mb-2" id="ordersAccordion" *ngFor="let order of orders">
+  <div
+    class="accordion mb-2"
+    id="ordersAccordion"
+    *ngFor="let order of orders; let i = index"
+  >
     <div class="accordion-item shadow-sm border-primary">
       <h2 class="accordion-header" [id]="'heading' + order.id">
         <button
@@ -10,7 +14,7 @@
           aria-expanded="false"
           [attr.aria-controls]="'collapse' + order.id"
         >
-          Order #{{ order.id }}
+          Order #{{ i + 1 }}
         </button>
       </h2>
       <div
@@ -23,11 +27,16 @@
           <div class="row">
             <div class="col">
               <p class="fw-bold text-decoration-underline m-0">Order Date</p>
-              <p>{{ order.orderDate }}</p>
+              <p>{{ order.orderDate | date }}</p>
             </div>
             <div class="col">
               <p class="fw-bold text-decoration-underline m-0">Status</p>
-              <p>{{ order.status }}</p>
+              <p>
+                <ng-template *ngIf="order.delivered; else notDelivered">
+                  Delivered
+                </ng-template>
+                <ng-template #notDelivered>In Shipping</ng-template>
+              </p>
             </div>
             <div class="col">
               <p class="fw-bold text-decoration-underline m-0">Delivery Date</p>
@@ -38,13 +47,13 @@
           <div class="col-8 col-md-6 m-auto">
             <div class="btn-group w-100">
               <!-- TODO add id to route -->
-              <button class="btn btn-info" routerLink="/orderdetails">
+              <button
+                class="btn btn-info"
+                routerLink="/orderdetails/{{ order.id }}"
+              >
                 Details
               </button>
-              <button
-                class="btn btn-danger"
-                [disabled]="order.status == 'Delivered'"
-              >
+              <button class="btn btn-danger" [disabled]="order.delivered">
                 Cancel
               </button>
             </div>

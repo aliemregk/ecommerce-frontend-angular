@@ -31,7 +31,7 @@ const routes: Routes = [
     path: "", component: ProfilePageComponent, children: [
       { path: "profile", component: ProfileComponent },
       { path: "orders", component: UserOrdersComponent },
-      { path: "orderdetails", component: OrderDetailsComponent }
+      { path: "orderdetails/:orderid", component: OrderDetailsComponent }
     ]
   }
 

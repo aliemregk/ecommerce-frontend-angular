@@ -1,3 +1,5 @@
+import { Order } from './../../../../../model/models/entities/order.model';
+import { OrderService } from './../../../../../model/services/order.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,15 +9,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserOrdersComponent implements OnInit {
 
-  orders = [
-    { id: 1, orderDate: "10/01/2023", status: "Delivered", deliveryDate: "14/01/2023" },
-    { id: 2, orderDate: "15/01/2023", status: "Shipping", deliveryDate: "" },
-    { id: 3, orderDate: "16/01/2023", status: "Preparing", deliveryDate: "" }
-  ]
+  protected orders: Order[] = [];
+  protected dataLoaded: boolean = false;
 
-  constructor() { }
+  constructor(private readonly orderService: OrderService) { }
 
   ngOnInit(): void {
+    this.getOrders();
+  }
+
+  public getOrders(): void {
+    this.orderService.getAllByUserId(3).subscribe({
+      next: (response) => {
+        this.orders = response.data;
+        console.log(this.orders);
+
+        this.dataLoaded = true;
+      },
+      error: (errorResponse) => {
+        console.log(errorResponse);
+      }
+    });
   }
 
 }
