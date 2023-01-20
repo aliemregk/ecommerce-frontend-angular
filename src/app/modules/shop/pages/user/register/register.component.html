@@ -44,6 +44,16 @@
               formControlName="password"
             />
             <label for="floatingPassword">Password</label>
+            <span
+              class="help-block text-white"
+              *ngIf="
+                password.touched &&
+                !password.valid &&
+                password.hasError('passwordStrength')
+              "
+            >
+              Password is weak.
+            </span>
           </div>
           <div class="form-floating my-4">
             <input
@@ -53,6 +63,15 @@
               formControlName="confirmPassword"
             />
             <label for="floatingPassword">Confirm Password</label>
+            <span
+              class="help-block text-white"
+              *ngIf="
+                confirmPassword.touched &&
+                registerForm.hasError('passwordMatch')
+              "
+            >
+              Passwords do not match.
+            </span>
           </div>
 
           <button
