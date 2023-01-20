@@ -1,3 +1,6 @@
+import { OrderDetail } from './../../../../../model/models/entities/order-detail.model';
+import { OrderDetailService } from './../../../../../model/services/order-detail.service';
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,15 +10,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderDetailsComponent implements OnInit {
 
-  orderDetails: any[] = [
-    { id: 1, product: { id: 3, name: "Product 3", unitPrice: 50 }, quantity: 2 },
-    { id: 2, product: { id: 1, name: "Product 1", unitPrice: 20 }, quantity: 1 },
-    { id: 3, product: { id: 4, name: "Product 4", unitPrice: 70 }, quantity: 1 }
-  ]
+  protected orderDetails: OrderDetail[] = [];
+  protected dataLoaded: boolean = false;
 
-  constructor() { }
+  constructor(
+    private readonly orderDetailService: OrderDetailService,
+    private readonly activatedRoute: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
+    this.getUrlParams();
+  }
+
+  private getUrlParams() {
+    this.activatedRoute.params.subscribe((params) => {
+      this.getOrderDetails(params["orderid"]);
+    });
+  }
+
+  private getOrderDetails(orderId: number) {
+    this.orderDetailService.getAllByOrderId(orderId).subscribe({
+      next: (response) => {
+        this.orderDetails = response.data;
+        this.dataLoaded = true;
+      },
+      error: (errorResponse) => {
+        this.dataLoaded = false;
+        console.log(errorResponse);
+      }
+    });
   }
 
 }

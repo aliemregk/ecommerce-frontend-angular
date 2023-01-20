@@ -19,14 +19,14 @@ export class UserOrdersComponent implements OnInit {
   }
 
   public getOrders(): void {
+    // TODO refactor for user id
     this.orderService.getAllByUserId(3).subscribe({
       next: (response) => {
         this.orders = response.data;
-        console.log(this.orders);
-
         this.dataLoaded = true;
       },
       error: (errorResponse) => {
+        this.dataLoaded = false;
         console.log(errorResponse);
       }
     });
