@@ -1,3 +1,6 @@
+import { CartItem } from './../../../../../model/models/cart/cartItem.model';
+import { NotificationService } from './../../../../../../shared/services/notification.service';
+import { CartService } from './../../../../../model/services/cart.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,34 +10,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartComponent implements OnInit {
 
-  cartItems = [
-    { name: "product 1", image: "https://picsum.photos/id/1/80", description: "Lorem ipsum dolor sit amet consectetur.", quantity: 1, unitPrice: 20 },
-    { name: "product 2", image: "https://picsum.photos/id/2/80", description: "Lorem ipsum dolor sit amet consectetur.", quantity: 4, unitPrice: 28 },
-    { name: "product 3", image: "https://picsum.photos/id/3/80", description: "Lorem ipsum dolor sit amet consectetur.", quantity: 1, unitPrice: 15 },
-    { name: "product 4", image: "https://picsum.photos/id/4/80", description: "Lorem ipsum dolor sit amet consectetur.", quantity: 3, unitPrice: 37 },
-    { name: "product 5", image: "https://picsum.photos/id/5/80", description: "Lorem ipsum dolor sit amet consectetur.", quantity: 1, unitPrice: 65 },
-    { name: "product 6", image: "https://picsum.photos/id/6/80", description: "Lorem ipsum dolor sit amet consectetur.", quantity: 2, unitPrice: 50 }
-  ];
-
-  constructor() { }
+  constructor(
+    protected readonly cartService: CartService,
+    private readonly notificationService: NotificationService
+  ) { }
 
   ngOnInit(): void {
   }
 
-
-  // TODO refactor 
-  increaseQuantity(item: any) {
-    item.quantity++;
+  protected increaseQuantity(item: CartItem): void {
+    this.cartService.addToCart(item.product);
   }
 
-  decreaseQuantity(item: any) {
+  protected decreaseQuantity(item: CartItem): void {
     if (item.quantity != 1) {
-      item.quantity--;
+      this.cartService.updateQuantity(item, -1);
     }
   }
 
-  removeFromCart(item: any) {
-    this.cartItems.splice(this.cartItems.indexOf(item), 1);
+  protected removeFromCart(item: CartItem): void {
+    this.notificationService.error(item.product.name + " removed from cart.")
+    this.cartService.removeFromCart(item);
+  }
+
+  protected clearCart(): void {
+    this.notificationService.info("All items removed from cart.");
+    this.cartService.clearCart();
   }
 
 }

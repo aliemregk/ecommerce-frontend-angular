@@ -61,15 +61,15 @@
   <div class="card-body">
     <div class="row">
       <div class="col">Cart Total:</div>
-      <div class="col text-end">1500$</div>
+      <div class="col text-end">{{ cartTotal }}</div>
     </div>
     <div class="row">
       <div class="col">Shipping:</div>
-      <div class="col text-end">20$</div>
+      <div class="col text-end">{{ shippingPrice }}</div>
     </div>
     <div class="row">
       <div class="col">Total:</div>
-      <div class="col text-end">1520$</div>
+      <div class="col text-end">{{ cartTotal + shippingPrice }}</div>
     </div>
   </div>
   <div class="card-footer bg-primary border-top text-center">
