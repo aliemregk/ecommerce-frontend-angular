@@ -1,18 +1,30 @@
 <header
-  class="navbar navbar-dark bg-primary container-md shadow-sm border-bottom my-md-3"
+  class="navbar navbar-expand-lg navbar-dark bg-primary container-md shadow-sm border-bottom my-md-3"
 >
   <div class="container">
-    <a class="navbar-brand me-3 m-2  fs-2" routerLink="">Shop</a>
-    <div class="d-flex justify-content-end">
-      <!-- TODO add badge  -->
-      <button class="btn btn-secondary mx-1" routerLink="/cart">
+    <a class="navbar-brand me-3 m-2 fs-2" routerLink="">Shop</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#nav-items"
+      aria-controls="nav-items"
+      aria-expanded="false"
+    >
+      <span class="navbar-toggler-icon fs-6"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="nav-items">
+      <button class="btn btn-secondary m-1" routerLink="/cart">
         Cart <i class="bi bi-cart"></i>
+        <span class="badge bg-white text-secondary rounded-pill p-1 ms-1">{{
+          itemsInCart
+        }}</span>
       </button>
-      <button class="btn btn-secondary mx-1" routerLink="/profile">
+      <button class="btn btn-secondary m-1" routerLink="/profile">
         Profile
       </button>
-      <button class="btn btn-secondary mx-1" routerLink="/login">Login</button>
-      <button class="btn btn-secondary mx-1" routerLink="/register">
+      <button class="btn btn-secondary m-1" routerLink="/login">Login</button>
+      <button class="btn btn-secondary m-1" routerLink="/register">
         Register
       </button>
     </div>
