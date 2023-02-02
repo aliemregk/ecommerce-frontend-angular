@@ -1,8 +1,11 @@
+import { AuthResponse } from './../../../../model/models/auth/authResponse.model';
+import { TokenService } from './../../../../model/services/token.service';
 import { LoginModel } from './../../../../model/models/auth/login.model';
 import { AuthService } from '../../../../model/services/auth.service';
 import { NotificationService } from './../../../../../shared/services/notification.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +19,9 @@ export class LoginComponent implements OnInit {
   constructor(
     private readonly formBuilder: FormBuilder,
     private readonly notificationService: NotificationService,
-    private readonly authService: AuthService
+    private readonly authService: AuthService,
+    private readonly tokenService: TokenService,
+    private readonly router: Router
   ) { }
 
   ngOnInit(): void {
@@ -33,20 +38,29 @@ export class LoginComponent implements OnInit {
   protected login(): void {
     if (this.loginForm.valid) {
       const loginModel: LoginModel = Object.assign({}, this.loginForm.value);
-      console.log(loginModel);
-      // TODO
       this.authService.login(loginModel).subscribe({
         next: (response) => {
-          console.log(response);
+          if (response.success) {
+            this.setUserInformation(response.data);
+            this.notificationService.success("Welcome");
+            this.router.navigate([""]);
+          } else {
+            this.notificationService.error(response.message);
+          }
         },
         error: (errorResponse) => {
-          console.log(errorResponse);
+          this.notificationService.error(errorResponse.message);
         }
       });
 
     } else {
       this.notificationService.error("Please check the information you entered.");
     }
+  }
+
+  private setUserInformation(response: AuthResponse): void {
+    this.tokenService.setUser(response.user);
+    this.tokenService.setToken(response.token);
   }
 
 }
