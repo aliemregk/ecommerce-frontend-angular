@@ -12,7 +12,9 @@ export class UserOrdersComponent implements OnInit {
   protected orders: Order[] = [];
   protected dataLoaded: boolean = false;
 
-  constructor(private readonly orderService: OrderService) { }
+  constructor(
+    private readonly orderService: OrderService
+    ) { }
 
   ngOnInit(): void {
     this.getOrders();

@@ -29,7 +29,7 @@ export class CartComponent implements OnInit {
   }
 
   protected removeFromCart(item: CartItem): void {
-    this.notificationService.error(item.product.name + " removed from cart.")
+    this.notificationService.success(item.product.name + " removed from cart.")
     this.cartService.removeFromCart(item);
   }
 
