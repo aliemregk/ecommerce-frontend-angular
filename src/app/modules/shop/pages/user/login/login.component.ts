@@ -1,5 +1,5 @@
 import { AuthResponse } from './../../../../model/models/auth/authResponse.model';
-import { TokenService } from './../../../../model/services/token.service';
+import { SessionService } from '../../../../model/services/session.service';
 import { LoginModel } from './../../../../model/models/auth/login.model';
 import { AuthService } from '../../../../model/services/auth.service';
 import { NotificationService } from './../../../../../shared/services/notification.service';
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     private readonly formBuilder: FormBuilder,
     private readonly notificationService: NotificationService,
     private readonly authService: AuthService,
-    private readonly tokenService: TokenService,
+    private readonly sessionService: SessionService,
     private readonly router: Router
   ) { }
 
@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
       this.authService.login(loginModel).subscribe({
         next: (response) => {
           if (response.success) {
-            this.setUserInformation(response.data);
+            this.setLoginStatus(response.data);
             this.notificationService.success("Welcome");
             this.router.navigate([""]);
           } else {
@@ -58,9 +58,10 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  private setUserInformation(response: AuthResponse): void {
-    this.tokenService.setUser(response.user);
-    this.tokenService.setToken(response.token);
+  private setLoginStatus(response: AuthResponse): void {
+    this.sessionService.isLoggedIn = true;
+    this.sessionService.setUser(response.user);
+    this.sessionService.setToken(response.token);
   }
 
 }

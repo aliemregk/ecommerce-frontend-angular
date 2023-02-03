@@ -1,3 +1,5 @@
+import { User } from './../../../../../model/models/entities/user.model';
+import { SessionService } from './../../../../../model/services/session.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,12 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  user = { id: 1, name: "user name", email: "user@email", address: "user address 123", phone: "123123123" };
+  protected user!: User;
 
-
-  constructor() { }
+  constructor(private readonly sessionService: SessionService) { }
 
   ngOnInit(): void {
+    this.user = this.sessionService.getUser();
+  }
+
+  public get name(): string {
+    return this.user.firstName + " " + this.user.lastName;
   }
 
 }

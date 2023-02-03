@@ -1,12 +1,12 @@
 <div class="container pb-5 h-100">
   <div class="d-flex justify-content-center align-items-center">
-    <div class="col-12 col-sm-8 col-md-6">
+    <div class="col-12 col-sm-10 col-md-8 col-lg-6">
       <div class="card bg-primary text-center p-5">
         <h3 class="card-header border-bottom bg-primary text-white">
           Register
         </h3>
         <form
-          class="card-body col-12 col-lg-8 m-auto"
+          class="card-body col-12 col-md-11 col-lg-10 m-auto"
           [formGroup]="registerForm"
         >
           <div class="form-floating my-4">
@@ -73,7 +73,6 @@
               Passwords do not match.
             </span>
           </div>
-
           <button
             class="btn btn-lg btn-success my-4 w-100"
             (click)="register()"
