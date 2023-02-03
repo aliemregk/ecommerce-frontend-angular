@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderDetailsComponent implements OnInit {
 
+  protected orderTotalPrice: number = 0;
   protected orderDetails: OrderDetail[] = [];
   protected dataLoaded: boolean = false;
 
@@ -20,6 +21,7 @@ export class OrderDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUrlParams();
+    this.orderTotalPrice = this.orderDetailService.orderTotal;
   }
 
   private getUrlParams() {

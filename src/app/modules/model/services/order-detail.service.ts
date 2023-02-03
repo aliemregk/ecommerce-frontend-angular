@@ -11,6 +11,8 @@ import { BaseService } from './base.service';
 })
 export class OrderDetailService extends BaseService<OrderDetail> {
 
+  public orderTotal: number = 0;
+
   constructor(private readonly httpClient: HttpClient) {
     super(httpClient, ORDER_DETAIL_ENDPOINT);
   }

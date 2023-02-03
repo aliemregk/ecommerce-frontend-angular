@@ -1,6 +1,8 @@
+import { OrderDetailService } from './../../../../../model/services/order-detail.service';
+import { SessionService } from './../../../../../model/services/session.service';
 import { Order } from './../../../../../model/models/entities/order.model';
 import { OrderService } from './../../../../../model/services/order.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-user-orders',
@@ -13,16 +15,17 @@ export class UserOrdersComponent implements OnInit {
   protected dataLoaded: boolean = false;
 
   constructor(
-    private readonly orderService: OrderService
-    ) { }
+    private readonly orderService: OrderService,
+    private readonly sessionService: SessionService,
+    private readonly orderDetailService: OrderDetailService
+  ) { }
 
   ngOnInit(): void {
-    this.getOrders();
+    this.getOrders(this.sessionService.getUser().id);
   }
 
-  public getOrders(): void {
-    // TODO refactor for user id
-    this.orderService.getAllByUserId(3).subscribe({
+  public getOrders(userId: number): void {
+    this.orderService.getAllByUserId(userId).subscribe({
       next: (response) => {
         this.orders = response.data;
         this.dataLoaded = true;
@@ -32,6 +35,10 @@ export class UserOrdersComponent implements OnInit {
         console.log(errorResponse);
       }
     });
+  }
+
+  protected setOrderTotal(total: number): void {
+    this.orderDetailService.orderTotal = total;
   }
 
 }

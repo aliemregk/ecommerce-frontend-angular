@@ -49,6 +49,7 @@
               <button
                 class="btn btn-info"
                 routerLink="/orderdetails/{{ order.id }}"
+                (click)="setOrderTotal(order.totalPrice)"
               >
                 Details
               </button>
