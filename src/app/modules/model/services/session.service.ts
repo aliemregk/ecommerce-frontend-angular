@@ -1,15 +1,22 @@
-import { User } from './../models/entities/user.model';
+import { User } from '../models/entities/user.model';
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TokenService {
+export class SessionService {
 
-  private user!: User;
-  private token!: string;
+  private user: User;
+  private token: string;
+  public isLoggedIn: boolean = false;
 
   constructor() { }
+
+  public logout(): void {
+    this.setUser(null);
+    this.setToken("");
+    this.isLoggedIn = false;
+  }
 
   public getUser(): User {
     return this.user;

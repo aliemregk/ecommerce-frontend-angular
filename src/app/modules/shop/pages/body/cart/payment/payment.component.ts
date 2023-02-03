@@ -1,3 +1,4 @@
+import { SessionService } from './../../../../../model/services/session.service';
 import { CartService } from './../../../../../model/services/cart.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -10,7 +11,10 @@ export class PaymentComponent implements OnInit {
 
   protected shippingPrice: number = 10;
 
-  constructor(private readonly cartService: CartService) { }
+  constructor(
+    private readonly cartService: CartService,
+    private readonly sessionService: SessionService
+  ) { }
 
   ngOnInit(): void {
   }
@@ -19,6 +23,10 @@ export class PaymentComponent implements OnInit {
     return this.cartService.cartItems.reduce((sum, item) => {
       return sum + (item.product.unitPrice * item.quantity)
     }, 0)
+  }
+
+  public get isLoggedIn(): boolean {
+    return this.sessionService.isLoggedIn;
   }
 
 }
