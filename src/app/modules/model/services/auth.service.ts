@@ -1,3 +1,4 @@
+import { RegisterModel } from './../models/auth/register.model';
 import { API_URL, AUTH_ENDPOINT } from '../../../shared/constants/constants';
 import { LoginModel } from '../models/auth/login.model';
 import { AuthResponse } from '../models/auth/authResponse.model';
@@ -15,5 +16,9 @@ export class AuthService {
 
   public login(loginModel: LoginModel): Observable<SingleResponse<AuthResponse>> {
     return this.httpClient.post<SingleResponse<AuthResponse>>(API_URL + AUTH_ENDPOINT + "login", loginModel);
+  }
+
+  public register(registerModel: RegisterModel): Observable<SingleResponse<AuthResponse>> {
+    return this.httpClient.post<SingleResponse<AuthResponse>>(API_URL + AUTH_ENDPOINT + "register", registerModel);
   }
 }

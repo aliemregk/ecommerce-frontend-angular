@@ -1,3 +1,4 @@
+import { AuthResponse } from './../models/auth/authResponse.model';
 import { User } from '../models/entities/user.model';
 import { Injectable } from '@angular/core';
 
@@ -11,6 +12,12 @@ export class SessionService {
   public isLoggedIn: boolean = false;
 
   constructor() { }
+
+  public setSessionStatus(response: AuthResponse): void {
+    this.isLoggedIn = true;
+    this.setUser(response.user);
+    this.setToken(response.token);
+  }
 
   public logout(): void {
     this.setUser(null);

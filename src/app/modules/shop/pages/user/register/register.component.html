@@ -13,10 +13,19 @@
             <input
               type="text"
               class="form-control"
-              placeholder="John Doe"
-              formControlName="name"
+              placeholder="John"
+              formControlName="firstName"
             />
             <label for="floatingInput">Name</label>
+          </div>
+          <div class="form-floating my-4">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Doe"
+              formControlName="lastName"
+            />
+            <label for="floatingInput">Surname</label>
           </div>
           <div class="form-floating my-4">
             <input
@@ -29,6 +38,16 @@
           </div>
           <div class="form-floating my-4">
             <input
+              type="number"
+              class="form-control"
+              placeholder="(123) 123 123 12 12"
+              formControlName="phone"
+              onkeypress="if(this.value.length > 12) return false"
+            />
+            <label for="floatingInput">Phone</label>
+          </div>
+          <div class="form-floating my-4">
+            <input
               type="email"
               class="form-control"
               placeholder="name@example.com"
@@ -36,7 +55,7 @@
             />
             <label for="floatingInput">Email</label>
           </div>
-          <div class="form-floating">
+          <div class="form-floating my-4">
             <input
               type="password"
               class="form-control"

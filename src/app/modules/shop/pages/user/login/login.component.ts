@@ -41,8 +41,8 @@ export class LoginComponent implements OnInit {
       this.authService.login(loginModel).subscribe({
         next: (response) => {
           if (response.success) {
-            this.setLoginStatus(response.data);
-            this.notificationService.success("Welcome");
+            this.sessionService.setSessionStatus(response.data);
+            this.notificationService.success("Welcome " + response.data.user.firstName);
             this.router.navigate([""]);
           } else {
             this.notificationService.error(response.message);
@@ -58,10 +58,6 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  private setLoginStatus(response: AuthResponse): void {
-    this.sessionService.isLoggedIn = true;
-    this.sessionService.setUser(response.user);
-    this.sessionService.setToken(response.token);
-  }
+
 
 }

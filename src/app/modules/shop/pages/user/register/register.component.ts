@@ -1,3 +1,7 @@
+import { Router } from '@angular/router';
+import { SessionService } from './../../../../model/services/session.service';
+import { AuthService } from './../../../../model/services/auth.service';
+import { RegisterModel } from './../../../../model/models/auth/register.model';
 import { FormGroup, FormBuilder, Validators, FormControl, ValidationErrors, ValidatorFn, AbstractControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { NotificationService } from './../../../../../shared/services/notification.service';
@@ -14,7 +18,10 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private readonly formBuilder: FormBuilder,
-    private readonly notificationService: NotificationService
+    private readonly notificationService: NotificationService,
+    private readonly authService: AuthService,
+    private readonly sessionService: SessionService,
+    private readonly router: Router
   ) { }
 
   ngOnInit(): void {
@@ -30,8 +37,10 @@ export class RegisterComponent implements OnInit {
 
   private createRegisterForm(): void {
     this.registerForm = this.formBuilder.group({
-      name: ["", Validators.required],
+      firstName: ["", Validators.required],
+      lastName: ["", Validators.required],
       address: ["", Validators.required],
+      phone: ["", Validators.required],
       email: ["", [Validators.required, Validators.email]],
       password: ["", [Validators.required, passwordStrength]],
       confirmPassword: ["", [Validators.required, passwordStrength]]
@@ -45,10 +54,20 @@ export class RegisterComponent implements OnInit {
   }
 
   protected register() {
-    console.log(this.registerForm);
     if (this.registerForm.valid) {
-      // TODO add auth service
-      console.log(this.registerForm);
+      const registerModel: RegisterModel = Object.assign({}, this.registerForm.value);
+      this.authService.register(registerModel).subscribe({
+        next: (response) => {
+          this.sessionService.setSessionStatus(response.data);
+          this.notificationService.success("Welcome " + response.data.user.firstName);
+          this.router.navigate([""]);
+        },
+        error: (errorResponse) => {
+          // TODO add a global error handler
+          const [err]: string[] = Object.values(errorResponse.error)
+          this.notificationService.error(err);
+        }
+      });
     } else {
       this.notificationService.error("Please check the information you entered.");
     }
