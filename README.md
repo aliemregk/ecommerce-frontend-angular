@@ -1,6 +1,6 @@
-# Ecommerce
+# Ecommerce Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.7.
+This project is an e-commerce web site frontend developed using Angular and Bootstrap. This project is connected to [this](https://github.com/aliemregk/ecommerce-backend-spring) project.
 
 ## Development server
 
