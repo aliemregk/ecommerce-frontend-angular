@@ -1,3 +1,4 @@
+import { SessionService } from './../../../../model/services/session.service';
 import { CartService } from './../../../../model/services/cart.service';
 import { Component, Input, OnInit } from '@angular/core';
 
@@ -10,7 +11,10 @@ export class HeaderComponent implements OnInit {
 
   @Input() show: boolean = true;
 
-  constructor(private readonly cartService: CartService) { }
+  constructor(
+    private readonly cartService: CartService,
+    private readonly sessionService: SessionService
+  ) { }
 
   ngOnInit(): void {
 
@@ -19,4 +23,13 @@ export class HeaderComponent implements OnInit {
   public get itemsInCart(): number {
     return this.cartService.cartItems.length;
   }
+
+  public get isLoggedIn(): boolean {
+    return this.sessionService.isLoggedIn;
+  }
+
+  protected logout(): void {
+    this.sessionService.logout();
+  }
+
 }

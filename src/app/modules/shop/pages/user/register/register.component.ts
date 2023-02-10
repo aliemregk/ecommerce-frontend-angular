@@ -28,10 +28,10 @@ export class RegisterComponent implements OnInit {
     this.createRegisterForm();
   }
 
-  public get password(): FormControl {
+  protected get password(): FormControl {
     return this.registerForm.get("password") as FormControl;
   }
-  public get confirmPassword(): FormControl {
+  protected get confirmPassword(): FormControl {
     return this.registerForm.get("confirmPassword") as FormControl;
   }
 
@@ -53,7 +53,7 @@ export class RegisterComponent implements OnInit {
     return pass === confirmPass ? null : { passwordMatch: true }
   }
 
-  protected register() {
+  protected register(): void {
     if (this.registerForm.valid) {
       const registerModel: RegisterModel = Object.assign({}, this.registerForm.value);
       this.authService.register(registerModel).subscribe({

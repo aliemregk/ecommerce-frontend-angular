@@ -33,7 +33,7 @@ export class CartService {
 
   public addToCart(product: Product): void {
     if (this.checkIfExistsInCart(product)) {
-      this.updateQuantity(this.cartItem!);
+      this.updateQuantity(this.cartItem);
     } else {
       const newItem: CartItem = { product: product, quantity: 1 }
       this.store.dispatch(ADD_CART_ITEM(newItem));

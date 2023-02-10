@@ -20,13 +20,20 @@
           itemsInCart
         }}</span>
       </button>
-      <button class="btn btn-secondary m-1" routerLink="/profile">
-        Profile
-      </button>
-      <button class="btn btn-secondary m-1" routerLink="/login">Login</button>
-      <button class="btn btn-secondary m-1" routerLink="/register">
-        Register
-      </button>
+      <ng-container *ngIf="isLoggedIn; else loginRegister">
+        <button class="btn btn-secondary m-1" routerLink="/profile">
+          Profile
+        </button>
+        <button class="btn btn-secondary m-1" routerLink="" (click)="logout()">
+          Logout
+        </button>
+      </ng-container>
+      <ng-template #loginRegister>
+        <button class="btn btn-secondary m-1" routerLink="/login">Login</button>
+        <button class="btn btn-secondary m-1" routerLink="/register">
+          Register
+        </button>
+      </ng-template>
     </div>
   </div>
 </header>
