@@ -10,7 +10,7 @@
   </div>
   <ng-template #payment>
     <div class="card-body">
-      <form class="row g-3 m-auto col-12 col-sm-8 col-lg-12">
+      <form class="row g-3 m-auto col-12 col-sm-8 col-lg-12" [formGroup]="paymentForm">
         <div class="col-12">
           <label class="form-label" for="cardholder"> Cardholder's Name </label>
           <input
@@ -19,6 +19,7 @@
             id="cardholder"
             placeholder="Cardholder's Name"
             class="form-control"
+            formControlName="cardHolder"
           />
         </div>
         <div class="col-12">
@@ -30,6 +31,7 @@
             placeholder="1111 1111 1111 1111"
             class="form-control"
             onkeypress="if(this.value.length > 15) return false"
+            formControlName="cardNumber"
           />
         </div>
         <div class="col-12">
@@ -42,6 +44,7 @@
             class="form-control"
             max="999"
             onkeypress="if(this.value.length >2) return false"
+            formControlName="cvv"
           />
         </div>
         <div class="col-12">
@@ -52,6 +55,7 @@
             class="form-control"
             id="expiry"
             min="2023-02"
+            formControlName="expiry"
           />
         </div>
       </form>
@@ -71,7 +75,7 @@
       </div>
     </div>
     <div class="card-footer bg-primary border-top text-center">
-      <button class="btn btn-success w-50">Pay</button>
+      <button class="btn btn-success w-50" (click)="pay()">Pay</button>
     </div>
   </ng-template>
 </div>

@@ -1,3 +1,6 @@
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NotificationService } from './../../../../../../shared/services/notification.service';
+import { Router } from '@angular/router';
 import { SessionService } from './../../../../../model/services/session.service';
 import { CartService } from './../../../../../model/services/cart.service';
 import { Component, OnInit } from '@angular/core';
@@ -10,13 +13,27 @@ import { Component, OnInit } from '@angular/core';
 export class PaymentComponent implements OnInit {
 
   protected shippingPrice: number = 10;
+  protected paymentForm!: FormGroup;
 
   constructor(
     private readonly cartService: CartService,
-    private readonly sessionService: SessionService
+    private readonly sessionService: SessionService,
+    private readonly formBuilder: FormBuilder,
+    private readonly router: Router,
+    private readonly notificationService: NotificationService,
   ) { }
 
   ngOnInit(): void {
+    this.createPaymentForm();
+  }
+
+  private createPaymentForm(): void {
+    this.paymentForm = this.formBuilder.group({
+      cardHolder: ["", Validators.required],
+      cardNumber: ["", Validators.required],
+      cvv: ["", Validators.required],
+      expiry: ["", Validators.required]
+    });
   }
 
   protected get cartTotal(): number {
@@ -25,8 +42,17 @@ export class PaymentComponent implements OnInit {
     }, 0)
   }
 
-  public get isLoggedIn(): boolean {
+  protected get isLoggedIn(): boolean {
     return this.sessionService.isLoggedIn;
   }
 
+  protected pay(): void {
+    if (this.paymentForm.valid) {
+      this.notificationService.success("Payment succeed. " + this.cartTotal + "$");
+      this.router.navigate([""]);
+      this.cartService.clearCart();
+    } else {
+      this.notificationService.info("Payment error.");
+    }
+  }
 }

@@ -1,3 +1,4 @@
+import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CartComponent } from './cart/cart.component';
 import { NgModule } from '@angular/core';
@@ -13,7 +14,8 @@ import { PaymentComponent } from './payment/payment.component';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ]
 })
 export class CartModule { }
