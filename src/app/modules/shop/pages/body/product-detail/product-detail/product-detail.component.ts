@@ -1,3 +1,4 @@
+import { NotificationService } from './../../../../../../shared/services/notification.service';
 import { Product } from 'src/app/modules/model/models/entities/product.model';
 import { ProductService } from './../../../../../model/services/product.service';
 import { Component, OnInit, Output } from '@angular/core';
@@ -15,7 +16,8 @@ export class ProductDetailComponent implements OnInit {
 
   constructor(
     private readonly productService: ProductService,
-    private readonly activatedRoute: ActivatedRoute
+    private readonly activatedRoute: ActivatedRoute,
+    private readonly notificationService: NotificationService
   ) { }
 
   ngOnInit(): void {
@@ -32,7 +34,7 @@ export class ProductDetailComponent implements OnInit {
       },
       error: (errorResponse) => {
         this.dataLoaded = false;
-        console.log(errorResponse);
+        this.notificationService.error(errorResponse.error.message);
       }
     });
   }

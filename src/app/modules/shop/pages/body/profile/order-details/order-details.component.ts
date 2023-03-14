@@ -1,3 +1,4 @@
+import { NotificationService } from './../../../../../../shared/services/notification.service';
 import { OrderDetail } from './../../../../../model/models/entities/order-detail.model';
 import { OrderDetailService } from './../../../../../model/services/order-detail.service';
 import { ActivatedRoute } from '@angular/router';
@@ -16,7 +17,8 @@ export class OrderDetailsComponent implements OnInit {
 
   constructor(
     private readonly orderDetailService: OrderDetailService,
-    private readonly activatedRoute: ActivatedRoute
+    private readonly activatedRoute: ActivatedRoute,
+    private readonly notificationService: NotificationService
   ) { }
 
   ngOnInit(): void {
@@ -38,7 +40,7 @@ export class OrderDetailsComponent implements OnInit {
       },
       error: (errorResponse) => {
         this.dataLoaded = false;
-        console.log(errorResponse);
+        this.notificationService.error(errorResponse.error.message);
       }
     });
   }

@@ -1,3 +1,4 @@
+import { NotificationService } from './../../../../../shared/services/notification.service';
 import { Category } from '../../../../model/models/entities/category.model';
 import { CategoryService } from './../../../../model/services/category.service';
 import { Component, OnInit } from '@angular/core';
@@ -12,7 +13,10 @@ export class NavbarComponent implements OnInit {
   protected categories!: Category[];
   protected dataLoaded: boolean = false;
 
-  constructor(private readonly categoryService: CategoryService) { }
+  constructor(
+    private readonly categoryService: CategoryService,
+    private readonly notificationService: NotificationService
+  ) { }
 
   ngOnInit(): void {
     this.getAllCategories();
@@ -26,7 +30,7 @@ export class NavbarComponent implements OnInit {
       },
       error: (errorResponse) => {
         this.dataLoaded = false;
-        console.log(errorResponse);
+        this.notificationService.error(errorResponse.error.message);
       }
     });
   }

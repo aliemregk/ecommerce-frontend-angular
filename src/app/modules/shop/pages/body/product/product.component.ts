@@ -40,7 +40,7 @@ export class ProductComponent implements OnInit {
       },
       error: (errorResponse) => {
         this.dataLoaded = false;
-        console.log(errorResponse);
+        this.notificationService.error(errorResponse.error.message);
       }
     })
   }
@@ -53,7 +53,7 @@ export class ProductComponent implements OnInit {
       },
       error: (errorResponse) => {
         this.dataLoaded = false;
-        console.log(errorResponse);
+        this.notificationService.error(errorResponse.error.message);
       }
     })
   }

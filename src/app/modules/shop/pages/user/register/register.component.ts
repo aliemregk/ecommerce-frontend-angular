@@ -63,9 +63,7 @@ export class RegisterComponent implements OnInit {
           this.router.navigate([""]);
         },
         error: (errorResponse) => {
-          // TODO add a global error handler
-          const [err]: string[] = Object.values(errorResponse.error)
-          this.notificationService.error(err);
+          this.notificationService.error(errorResponse.error.validationErrors);
         }
       });
     } else {

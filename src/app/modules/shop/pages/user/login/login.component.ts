@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
           }
         },
         error: (errorResponse) => {
-          this.notificationService.error(errorResponse.message);
+          this.notificationService.error(errorResponse.error.validationErrors);
         }
       });
 

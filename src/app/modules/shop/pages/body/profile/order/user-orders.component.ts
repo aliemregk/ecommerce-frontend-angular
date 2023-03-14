@@ -1,3 +1,4 @@
+import { NotificationService } from './../../../../../../shared/services/notification.service';
 import { OrderDetailService } from './../../../../../model/services/order-detail.service';
 import { SessionService } from './../../../../../model/services/session.service';
 import { Order } from './../../../../../model/models/entities/order.model';
@@ -17,7 +18,8 @@ export class UserOrdersComponent implements OnInit {
   constructor(
     private readonly orderService: OrderService,
     private readonly sessionService: SessionService,
-    private readonly orderDetailService: OrderDetailService
+    private readonly orderDetailService: OrderDetailService,
+    private readonly notificationService: NotificationService
   ) { }
 
   ngOnInit(): void {
@@ -32,7 +34,7 @@ export class UserOrdersComponent implements OnInit {
       },
       error: (errorResponse) => {
         this.dataLoaded = false;
-        console.log(errorResponse);
+        this.notificationService.error(errorResponse.error.message);
       }
     });
   }
