@@ -1,3 +1,4 @@
+import { PaymentService } from './../../../../../model/services/payment.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NotificationService } from './../../../../../../shared/services/notification.service';
 import { Router } from '@angular/router';
@@ -21,6 +22,7 @@ export class PaymentComponent implements OnInit {
     private readonly formBuilder: FormBuilder,
     private readonly router: Router,
     private readonly notificationService: NotificationService,
+    private readonly paymentService: PaymentService
   ) { }
 
   ngOnInit(): void {
@@ -49,6 +51,7 @@ export class PaymentComponent implements OnInit {
   protected pay(): void {
     if (this.paymentForm.valid) {
       this.notificationService.success("Payment succeed. " + this.cartTotal + "$");
+      this.paymentService.createOrder(this.cartTotal);
       this.router.navigate([""]);
       this.cartService.clearCart();
     } else {
