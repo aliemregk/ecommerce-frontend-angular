@@ -5,9 +5,16 @@
       id="search-text"
       type="search"
       placeholder="Search"
+      [(ngModel)]="searchService.searchText"
     />
     <button class="btn btn-primary" id="search-btn" type="submit">
       <i class="bi-search"></i>
     </button>
   </div>
+</div>
+<div
+  *ngIf="searchService.searchText"
+  class="d-flex justify-content-center text-primary"
+>
+  Searching for: <strong>{{ searchService.searchText }}</strong>
 </div>

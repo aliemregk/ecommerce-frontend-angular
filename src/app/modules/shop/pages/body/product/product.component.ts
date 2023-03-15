@@ -1,3 +1,4 @@
+import { SearchService } from './../../../../model/services/search.service';
 import { CartService } from './../../../../model/services/cart.service';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from './../../../../model/services/product.service';
@@ -19,7 +20,8 @@ export class ProductComponent implements OnInit {
     private readonly productService: ProductService,
     private readonly activatedRoute: ActivatedRoute,
     private readonly notificationService: NotificationService,
-    private readonly cartService: CartService
+    private readonly cartService: CartService,
+    protected readonly searchService: SearchService
   ) { }
 
   ngOnInit(): void {

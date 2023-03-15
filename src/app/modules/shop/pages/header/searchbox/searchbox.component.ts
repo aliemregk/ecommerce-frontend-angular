@@ -1,3 +1,4 @@
+import { SearchService } from './../../../../model/services/search.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchboxComponent implements OnInit {
 
-  constructor() { }
+  constructor(protected readonly searchService: SearchService) { }
 
   ngOnInit(): void {
   }

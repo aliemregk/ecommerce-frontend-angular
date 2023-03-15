@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -15,6 +16,7 @@ import { SearchboxComponent } from './searchbox/searchbox.component';
   ],
   imports: [
     CommonModule,
+    FormsModule,
     RouterModule
   ],
   exports: [HeaderComponent]

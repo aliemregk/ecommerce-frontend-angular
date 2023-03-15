@@ -1,27 +1,32 @@
 <div class="row container-md m-auto">
   <ng-container *ngIf="dataLoaded; else ghostData">
-    <div
-      class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 g-3"
-      *ngFor="let product of products"
-    >
-      <div class="card mb-1 shadow">
-        <img
-          class="w-100 h-100"
-          src="https://picsum.photos/id/5/130/130"
-          alt="product img"
-          loading="lazy"
-          routerLink="/details/{{ product.id }}"
-        />
-        <div class="card-body">
-          <p class="card-text">{{ product.name }}</p>
-          <div class="row">
-            <button class="btn btn-primary" (click)="addToCart(product)">
-              {{ product.unitPrice }}$ <i class="bi bi-cart-plus"></i>
-            </button>
+    <ng-container *ngFor="let product of products">
+      <div
+        class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 g-3"
+        *ngIf="
+          searchService.searchText == '' ||
+          product.name.toLowerCase().includes(searchService.searchText)
+        "
+      >
+        <div class="card mb-1 shadow">
+          <img
+            class="w-100 h-100"
+            src="https://picsum.photos/id/5/130/130"
+            alt="product img"
+            loading="lazy"
+            routerLink="/details/{{ product.id }}"
+          />
+          <div class="card-body">
+            <p class="card-text">{{ product.name }}</p>
+            <div class="row">
+              <button class="btn btn-primary" (click)="addToCart(product)">
+                {{ product.unitPrice }}$ <i class="bi bi-cart-plus"></i>
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </ng-container>
   </ng-container>
   <ng-template #ghostData>
     <div
