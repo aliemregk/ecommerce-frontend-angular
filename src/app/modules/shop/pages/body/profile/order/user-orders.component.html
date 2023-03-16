@@ -31,12 +31,12 @@
             </div>
             <div class="col">
               <p class="fw-bold text-decoration-underline m-0">Status</p>
-              <p>
-                <ng-template *ngIf="order.delivered; else notDelivered">
-                  Delivered
-                </ng-template>
-                <ng-template #notDelivered>In Shipping</ng-template>
-              </p>
+              <span [ngSwitch]="order.status">
+                <p *ngSwitchCase="0">Preparing</p>
+                <p *ngSwitchCase="1">Shipping</p>
+                <p *ngSwitchCase="2">Delivered</p>
+                <p *ngSwitchCase="3">Cancelled</p>
+              </span>
             </div>
             <div class="col">
               <p class="fw-bold text-decoration-underline m-0">Delivery Date</p>
@@ -53,7 +53,7 @@
               >
                 Details
               </button>
-              <button class="btn btn-danger" [disabled]="order.delivered">
+              <button class="btn btn-danger" [disabled]="order.status > 3">
                 Cancel
               </button>
             </div>

@@ -3,7 +3,7 @@ import { OrderDetailService } from './../../../../../model/services/order-detail
 import { SessionService } from './../../../../../model/services/session.service';
 import { Order } from './../../../../../model/models/entities/order.model';
 import { OrderService } from './../../../../../model/services/order.service';
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-user-orders',

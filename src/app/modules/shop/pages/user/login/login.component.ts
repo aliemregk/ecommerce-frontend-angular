@@ -40,19 +40,14 @@ export class LoginComponent implements OnInit {
       const loginModel: LoginModel = Object.assign({}, this.loginForm.value);
       this.authService.login(loginModel).subscribe({
         next: (response) => {
-          if (response.success) {
-            this.sessionService.setSessionStatus(response.data);
-            this.notificationService.success("Welcome " + response.data.user.firstName);
-            this.router.navigate([""]);
-          } else {
-            this.notificationService.error(response.message);
-          }
+          this.sessionService.setSessionStatus(response.data);
+          this.notificationService.success("Welcome " + response.data.user.firstName);
+          this.router.navigate([""]);
         },
         error: (errorResponse) => {
-          this.notificationService.error(errorResponse.error.validationErrors);
+          this.notificationService.error(errorResponse.error.message);
         }
       });
-
     } else {
       this.notificationService.error("Please check the information you entered.");
     }

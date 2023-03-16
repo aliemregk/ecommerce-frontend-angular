@@ -50,8 +50,8 @@ export class PaymentComponent implements OnInit {
 
   protected pay(): void {
     if (this.paymentForm.valid) {
-      this.notificationService.success("Payment succeed. " + this.cartTotal + "$");
       this.paymentService.createOrder(this.cartTotal);
+      this.notificationService.success("Payment succeed. " + this.cartTotal + "$");
       this.router.navigate([""]);
       this.cartService.clearCart();
     } else {
