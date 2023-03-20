@@ -1,9 +1,10 @@
 import { NotificationService } from './../../../../../../shared/services/notification.service';
 import { OrderDetailService } from './../../../../../model/services/order-detail.service';
 import { SessionService } from './../../../../../model/services/session.service';
-import { Order } from './../../../../../model/models/entities/order.model';
+import { Order } from '../../../../../model/models/entities/order.model';
 import { OrderService } from './../../../../../model/services/order.service';
 import { Component, OnInit } from '@angular/core';
+import { OrderStatus } from 'src/app/modules/model/models/enums/order-status.enum';
 
 @Component({
   selector: 'app-user-orders',
@@ -26,7 +27,7 @@ export class UserOrdersComponent implements OnInit {
     this.getOrders(this.sessionService.getUser().id);
   }
 
-  public getOrders(userId: number): void {
+  private getOrders(userId: number): void {
     this.orderService.getAllByUserId(userId).subscribe({
       next: (response) => {
         this.orders = response.data;
@@ -41,6 +42,18 @@ export class UserOrdersComponent implements OnInit {
 
   protected setOrderTotal(total: number): void {
     this.orderDetailService.orderTotal = total;
+  }
+
+  protected cancelOrder(order: Order): void {
+    order.status = (<any>OrderStatus)[OrderStatus.CANCELLED];
+    this.orderService.update(order).subscribe({
+      next: () => {
+        this.notificationService.success("Order cancelled.");
+      },
+      error: (errorResponse) => {
+        this.notificationService.error(errorResponse.error.message);
+      }
+    });
   }
 
 }

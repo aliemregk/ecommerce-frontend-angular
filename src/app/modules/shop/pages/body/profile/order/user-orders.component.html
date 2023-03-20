@@ -31,16 +31,11 @@
             </div>
             <div class="col">
               <p class="fw-bold text-decoration-underline m-0">Status</p>
-              <span [ngSwitch]="order.status">
-                <p *ngSwitchCase="0">Preparing</p>
-                <p *ngSwitchCase="1">Shipping</p>
-                <p *ngSwitchCase="2">Delivered</p>
-                <p *ngSwitchCase="3">Cancelled</p>
-              </span>
+              <p>{{ order.status.toString() | titlecase }}</p>
             </div>
             <div class="col">
               <p class="fw-bold text-decoration-underline m-0">Delivery Date</p>
-              <p class="mb-2" id="delivery">{{ order.deliveryDate }}</p>
+              <p class="mb-2" id="delivery">{{ order.deliveryDate | date }}</p>
             </div>
             <div></div>
           </div>
@@ -53,7 +48,11 @@
               >
                 Details
               </button>
-              <button class="btn btn-danger" [disabled]="order.status > 3">
+              <button
+                class="btn btn-danger"
+                [disabled]="order.status.toString() == 'DELIVERED'"
+                (click)="cancelOrder(order)"
+              >
                 Cancel
               </button>
             </div>
