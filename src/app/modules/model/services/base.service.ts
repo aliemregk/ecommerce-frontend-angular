@@ -29,7 +29,7 @@ export abstract class BaseService<T> {
   }
 
   public update(data: T): Observable<Response> {
-    return this.http.patch<Response>(this.url + "update", data);
+    return this.http.put<Response>(this.url + "update", data);
   }
 
   public delete(id: number): Observable<Response> {

@@ -1,5 +1,5 @@
-import { OrderProduct } from './order-products.type';
-import { OrderStatus } from './../enums/order-status';
+import { OrderProduct } from '../types/order-products.type';
+import { OrderStatus } from '../enums/order-status.enum';
 import { User } from './user.model';
 
 export interface AddOrderRequest {

@@ -22,7 +22,7 @@ export class NavbarComponent implements OnInit {
     this.getAllCategories();
   }
 
-  getAllCategories() {
+  private getAllCategories() {
     this.categoryService.getAll().subscribe({
       next: (response) => {
         this.categories = response.data;

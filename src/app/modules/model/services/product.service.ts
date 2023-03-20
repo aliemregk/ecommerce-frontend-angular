@@ -16,7 +16,7 @@ export class ProductService extends BaseService<Product>{
     super(httpClient, PRODUCT_ENDPOINT);
   }
 
-  getAllProductsByCategoryId(categoryId: number): Observable<ListResponse<Product>> {
+  public getAllProductsByCategoryId(categoryId: number): Observable<ListResponse<Product>> {
     return this.httpClient.get<ListResponse<Product>>(API_URL + PRODUCT_ENDPOINT + "getallbycategoryid?id=" + categoryId);
   }
 }

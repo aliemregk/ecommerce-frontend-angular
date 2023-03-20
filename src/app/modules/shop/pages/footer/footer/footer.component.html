@@ -2,14 +2,21 @@
   <div class="row mt-5">
     <div class="container col-12 col-md-3 mb-3">
       <p class="py-1 text-center cursor-d">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
-        tenetur.
+        {{ description }}
       </p>
       <div class="d-flex justify-content-around mt-3">
-        <i class="bi bi-facebook mx-2 fs-4"></i>
-        <i class="bi bi-instagram mx-2 fs-4"></i>
-        <i class="bi bi-linkedin mx-2 fs-4"></i>
-        <i class="bi bi-twitter mx-2 fs-4"></i>
+        <a href="{{ facebookUrl }}" target="_blank">
+          <i class="bi bi-facebook mx-2 fs-4"></i>
+        </a>
+        <a href="{{ instagramUrl }}" target="_blank">
+          <i class="bi bi-instagram mx-2 fs-4"></i>
+        </a>
+        <a href="{{ linkedInUrl }}" target="_blank">
+          <i class="bi bi-linkedin mx-2 fs-4"></i>
+        </a>
+        <a href="{{ twitterUrl }}" target="_blank">
+          <i class="bi bi-twitter mx-2 fs-4"></i>
+        </a>
       </div>
     </div>
     <div class="container col-12 col-md-2 mb-3">

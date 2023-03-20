@@ -2,7 +2,7 @@ import { Observable } from 'rxjs';
 import { ListResponse } from './../models/responses/listResponse.model';
 import { HttpClient } from '@angular/common/http';
 import { ORDER_ENDPOINT, API_URL } from './../../../shared/constants/constants';
-import { Order } from './../models/entities/order.model';
+import { Order } from '../models/entities/order.model';
 import { Injectable } from '@angular/core';
 import { BaseService } from './base.service';
 

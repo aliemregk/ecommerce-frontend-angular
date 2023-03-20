@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
-import { OrderProduct } from '../models/entities/order-products.type';
-import { OrderStatus } from './../models/enums/order-status';
+import { OrderProduct } from '../models/types/order-products.type';
+import { OrderStatus } from '../models/enums/order-status.enum';
 import { NotificationService } from './../../../shared/services/notification.service';
 import { CartService } from './cart.service';
 import { SessionService } from './session.service';
@@ -21,7 +21,7 @@ export class PaymentService {
     private readonly router: Router
   ) { }
 
-  getOrderItems() {
+  private getOrderItems() {
     const orderProducts: OrderProduct = {};
     this.cartService.cartItems.forEach((cartItem) => {
       orderProducts[cartItem.product.id] = cartItem.quantity;
@@ -29,7 +29,7 @@ export class PaymentService {
     return orderProducts;
   }
 
-  createOrder(totalPrice: number) {
+  public createOrder(totalPrice: number) {
     const newOrder: AddOrderRequest = {
       id: 0, status: OrderStatus.PREPARING, deliveryDate: null, orderDate: new Date(), totalPrice: totalPrice, user: this.sessionService.getUser(), orderProducts: this.getOrderItems()
     }
