@@ -1,7 +1,6 @@
 import { PaymentService } from './../../../../../model/services/payment.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NotificationService } from './../../../../../../shared/services/notification.service';
-import { Router } from '@angular/router';
 import { SessionService } from './../../../../../model/services/session.service';
 import { CartService } from './../../../../../model/services/cart.service';
 import { Component, OnInit } from '@angular/core';
@@ -20,7 +19,6 @@ export class PaymentComponent implements OnInit {
     private readonly cartService: CartService,
     private readonly sessionService: SessionService,
     private readonly formBuilder: FormBuilder,
-    private readonly router: Router,
     private readonly notificationService: NotificationService,
     private readonly paymentService: PaymentService
   ) { }
@@ -51,9 +49,6 @@ export class PaymentComponent implements OnInit {
   protected pay(): void {
     if (this.paymentForm.valid) {
       this.paymentService.createOrder(this.cartTotal);
-      this.notificationService.success("Payment succeed. " + this.cartTotal + "$");
-      this.router.navigate([""]);
-      this.cartService.clearCart();
     } else {
       this.notificationService.info("Payment error.");
     }
