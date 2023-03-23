@@ -21,7 +21,7 @@ export class PaymentService {
     private readonly router: Router
   ) { }
 
-  private getOrderItems() {
+  private getOrderItems(): OrderProduct {
     const orderProducts: OrderProduct = {};
     this.cartService.cartItems.forEach((cartItem) => {
       orderProducts[cartItem.product.id] = cartItem.quantity;
@@ -29,7 +29,7 @@ export class PaymentService {
     return orderProducts;
   }
 
-  public createOrder(totalPrice: number) {
+  public createOrder(totalPrice: number): void {
     const newOrder: AddOrderRequest = {
       id: 0, status: OrderStatus.PREPARING, deliveryDate: null, orderDate: new Date(), totalPrice: totalPrice, user: this.sessionService.getUser(), orderProducts: this.getOrderItems()
     }

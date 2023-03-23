@@ -35,6 +35,6 @@ export class DetailPanelComponent implements OnInit {
 
   protected addToCart(product: Product): void {
     this.notificationService.success(product.name + " added to cart.")
-    this.cartService.addToCart(product);
+    this.cartService.addToCart(product, this.quantity);
   }
 }

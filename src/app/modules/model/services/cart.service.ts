@@ -31,11 +31,11 @@ export class CartService {
     });
   }
 
-  public addToCart(product: Product): void {
+  public addToCart(product: Product, quantity: number = 1): void {
     if (this.checkIfExistsInCart(product)) {
       this.updateQuantity(this.cartItem);
     } else {
-      const newItem: CartItem = { product: product, quantity: 1 }
+      const newItem: CartItem = { product: product, quantity: quantity }
       this.store.dispatch(ADD_CART_ITEM(newItem));
     }
   }
